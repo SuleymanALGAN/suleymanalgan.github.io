@@ -1387,8 +1387,16 @@ links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links
       titleEl.textContent = kart.querySelector('h3').textContent;
       bodyEl.innerHTML = detay.innerHTML;
       bodyEl.scrollTop = 0;
-      modal.showModal();
-      document.body.style.overflow = 'hidden';   // arka plan kaymasın
+      try {
+        modal.showModal();
+        document.body.style.overflow = 'hidden';   // arka plan kaymasın
+      } catch (e) {
+        // Pencere açılamazsa (bazı tarayıcı sürümleri) metni kartın
+        // içinde aç/kapat — kullanıcı içeriksiz kalmasın.
+        const acik = detay.style.display === 'block';
+        detay.style.display = acik ? 'none' : 'block';
+        btn.textContent = acik ? 'Detaylar →' : 'Detayları gizle ↑';
+      }
     });
   });
 
