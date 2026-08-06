@@ -8,6 +8,13 @@
 <link rel="canonical" href="https://fettahoglusigorta.com/">
 <meta name="theme-color" content="#122238">
 
+<!-- max-image-preview:large — Google sonuçlarında büyük görsel önizlemeye izin verir.
+     max-snippet:-1 — açıklama metnini kısaltma sınırı olmadan gösterebilir. -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Fettahoğlu Sigorta Acenteliği">
+<meta name="geo.region" content="TR-80">
+<meta name="geo.placename" content="Düziçi, Osmaniye">
+
 <!-- Favicon: SVG modern tarayıcılarda, .ico eski tarayıcılarda ve
      tarayıcının kök dizinden istediği /favicon.ico çağrısında kullanılır.
      Yollar göreli — hem yerelde dosyadan açınca hem sunucuda çalışır. -->
@@ -33,6 +40,7 @@
 <meta name="twitter:title" content="Fettahoğlu Sigorta | 35+ Yıllık Güvence — Düziçi, Osmaniye">
 <meta name="twitter:description" content="Allianz yetkili acentesi. Trafik, kasko, sağlık, konut, işyeri, hayat ve BES sigortalarında 1987'den beri yanınızdayız.">
 <meta name="twitter:image" content="https://fettahoglusigorta.com/og-image.jpg">
+<meta name="twitter:image:alt" content="Fettahoğlu Sigorta ofisi — Düziçi, Osmaniye">
 
 <!-- Yapısal veri: Google'ın işletme kartı (adres, telefon, çalışma saatleri)
      bu bloktan beslenir. Adres, telefon veya mesai saati değişirse
@@ -40,6 +48,8 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@graph": [
+  {
   "@type": "InsuranceAgency",
   "@id": "https://fettahoglusigorta.com/#acente",
   "name": "Fettahoğlu Sigorta",
@@ -52,12 +62,22 @@
   "telephone": "+903288765125",
   "email": "fettahoglusigorta0@gmail.com",
   "currenciesAccepted": "TRY",
+  "paymentAccepted": "Nakit, Kredi Kartı, Havale/EFT",
+  "knowsLanguage": "tr",
+  "slogan": "1987'den beri güvence",
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Fettaho%C4%9Flu%20Sigorta%20Acenteli%C4%9Fi%20D%C3%BCzi%C3%A7i&query_place_id=ChIJf8lznsbxLhURTrY1x9eaUTA",
+  "brand": { "@type": "Brand", "name": "Allianz Sigorta" },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "İstiklal Mah. Refik Cesur Bulv. No:196/1",
     "addressLocality": "Düziçi",
     "addressRegion": "Osmaniye",
     "addressCountry": "TR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 37.239670,
+    "longitude": 36.452884
   },
   "openingHoursSpecification": [
     {
@@ -104,15 +124,87 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trafik & Kasko Sigortası" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sağlık Sigortası" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yuvam & İşyeri Sigortası" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hayat & BES Sigortası" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hayat & BES Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Konut & DASK Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tarım Sigortası (TARSİM)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seyahat Sağlık Sigortası" } }
     ]
   }
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://fettahoglusigorta.com/#website",
+    "url": "https://fettahoglusigorta.com/",
+    "name": "Fettahoğlu Sigorta",
+    "inLanguage": "tr-TR",
+    "publisher": { "@id": "https://fettahoglusigorta.com/#acente" }
+  },
+  {
+    "@type": "WebPage",
+    "@id": "https://fettahoglusigorta.com/#webpage",
+    "url": "https://fettahoglusigorta.com/",
+    "name": "Fettahoğlu Sigorta | 35+ Yıllık Güvence — Düziçi, Osmaniye",
+    "isPartOf": { "@id": "https://fettahoglusigorta.com/#website" },
+    "about": { "@id": "https://fettahoglusigorta.com/#acente" },
+    "primaryImageOfPage": "https://fettahoglusigorta.com/og-image.jpg",
+    "inLanguage": "tr-TR"
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://fettahoglusigorta.com/#sss",
+    "isPartOf": { "@id": "https://fettahoglusigorta.com/#webpage" },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "İhtiyacıma en uygun poliçeyi nasıl seçebilirim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "İhtiyaçlarınızı ve bütçenizi dinler, size özel bir değerlendirme yaparız. Teminat kapsamı ile fiyat dengesini gözeterek en uygun poliçeyi birlikte seçeriz."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hangi sigorta şirketiyle çalışıyorsunuz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1987'den bu yana yalnızca Allianz Sigorta'nın yetkili acentesiyiz. Allianz'ın tüm ürünlerini sunar; teminat kapsamı, muafiyet oranları ve ödeme seçenekleriyle birlikte alternatif planları önünüze koyarız. Karar sizindir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hasar anında size nasıl ulaşabilirim, süreç nasıl işler?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hasar anında 7/24 bize ulaşabilirsiniz. Dosya açılışından tazminat ödemesine kadar tüm takibi biz yaparız; evrak işleriyle siz uğraşmazsınız."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ofise gelmeden online veya telefonla danışmanlık alabilir miyim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evet. Telefonla veya online görüşmeyle evinizden danışmanlık alabilir, poliçe işlemlerinizi ofise gelmeden tamamlayabilirsiniz."
+        }
+      }
+    ]
+  }
+  ]
 }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Fontlar render'ı bloklamadan yüklenir: önce preload olarak inerler, indikten
+     sonra onload ile stylesheet'e dönüşürler. Bu, Google'ın sıralama sinyali olan
+     LCP (ilk büyük içeriğin görünme süresi) değerini iyileştirir.
+     JS kapalıysa noscript içindeki normal link devreye girer. -->
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+</noscript>
 <style>
 :root{
   --ink:#122238;
@@ -347,7 +439,7 @@ section{padding:78px 0}
   font-family:'Fraunces',serif;font-weight:700;font-size:21px;color:var(--brass);
   line-height:1.2;
 }
-.awards h4{font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:3px;font-family:'IBM Plex Sans',sans-serif}
+.awards h3{font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:3px;font-family:'IBM Plex Sans',sans-serif}
 .awards p{font-size:13.5px;color:var(--muted)}
 
 /* Awards photo grid */
@@ -378,7 +470,7 @@ section{padding:78px 0}
   font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:var(--brass);
   letter-spacing:.05em;margin-bottom:4px;display:block;
 }
-.award-card h4{font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:5px;font-family:'IBM Plex Sans',sans-serif}
+.award-card h3{font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:5px;font-family:'IBM Plex Sans',sans-serif}
 .award-card p{font-size:13.5px;color:var(--muted)}
 
 /* Team */
@@ -418,7 +510,7 @@ section{padding:78px 0}
 /* height:auto şart — img'deki height attribute'u olmasa aspect-ratio devre dışı kalır */
 .cert-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .cert-card figcaption{padding:16px 18px 18px}
-.cert-card h4{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:4px;font-family:'IBM Plex Sans',sans-serif}
+.cert-card h3{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:4px;font-family:'IBM Plex Sans',sans-serif}
 .cert-card p{font-size:13px;color:var(--muted)}
 
 /* FAQ */
@@ -451,7 +543,7 @@ details .body{padding:0 24px 20px;font-size:14.5px;color:var(--muted)}
   display:grid;place-items:center;color:var(--brass-light);
 }
 .c-item .ic svg{width:21px;height:21px}
-.c-item h4{color:#fff;font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px}
+.c-item h3{color:#fff;font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px}
 .c-item p, .c-item a{font-size:14.5px;color:#b0bfd1;text-decoration:none;line-height:1.7}
 .c-item a:hover{color:var(--brass-light)}
 form.cform{
@@ -585,6 +677,7 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </header>
 
+<main>
 <section class="hero" id="top" style="padding:0">
   <div class="wrap">
     <div>
@@ -695,91 +788,91 @@ html.js .reveal.in{opacity:1;transform:none}
       <div class="awards-grid">
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2024-allianz-osmaniye-il-birincisi.jpg" alt="2024 — Allianz Osmaniye İl Birincisi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2024</span><h4>Allianz Osmaniye İl Birincisi</h4><p>Osmaniye'nin en yüksek üretim yapan Allianz acentesi olarak il birinciliği</p></div>
+          <div class="a-body"><span class="yr">2024</span><h3>Allianz Osmaniye İl Birincisi</h3><p>Osmaniye'nin en yüksek üretim yapan Allianz acentesi olarak il birinciliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2024-allianz-prestij-club-uyeligi.jpg" alt="2024 — Allianz Prestij Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2024</span><h4>Allianz Prestij Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2024</span><h3>Allianz Prestij Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2022-bolge-birincisi-en-yuksek-prim-uretimi.jpg" alt="2022 — Bölge Birincisi — En Yüksek Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2022</span><h4>Bölge Birincisi — En Yüksek Prim Üretimi</h4><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
+          <div class="a-body"><span class="yr">2022</span><h3>Bölge Birincisi — En Yüksek Prim Üretimi</h3><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2022-35-yil-onur-odulu.jpg" alt="2022 — 35. Yıl Onur Ödülü" width="760" height="570" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2022</span><h4>35. Yıl Onur Ödülü</h4><p>Allianz ile kesintisiz 35 yıllık iş birliği ve örnek acentelik anlayışı için verilen onur plaketi</p></div>
+          <div class="a-body"><span class="yr">2022</span><h3>35. Yıl Onur Ödülü</h3><p>Allianz ile kesintisiz 35 yıllık iş birliği ve örnek acentelik anlayışı için verilen onur plaketi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2021-allianz-osmaniye-il-birincisi.jpg" alt="2021 — Allianz Osmaniye İl Birincisi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2021</span><h4>Allianz Osmaniye İl Birincisi</h4><p>Üstün başarı ve markaya katkılardan ötürü 2021 Allianz İl Birincisi Acente</p></div>
+          <div class="a-body"><span class="yr">2021</span><h3>Allianz Osmaniye İl Birincisi</h3><p>Üstün başarı ve markaya katkılardan ötürü 2021 Allianz İl Birincisi Acente</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2021-bolge-birincisi-en-yuksek-prim-uretimi.jpg" alt="2021 — Bölge Birincisi — En Yüksek Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2021</span><h4>Bölge Birincisi — En Yüksek Prim Üretimi</h4><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
+          <div class="a-body"><span class="yr">2021</span><h3>Bölge Birincisi — En Yüksek Prim Üretimi</h3><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2021-allianz-elit-club-uyeligi.jpg" alt="2021 — Allianz Elit Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2021</span><h4>Allianz Elit Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Elit Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2021</span><h3>Allianz Elit Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Elit Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2020-allianz-osmaniye-il-birincisi.jpg" alt="2020 — Allianz Osmaniye İl Birincisi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2020</span><h4>Allianz Osmaniye İl Birincisi</h4><p>Üstün başarı ve markaya katkılardan ötürü 2020 Allianz İl Birincisi Acente</p></div>
+          <div class="a-body"><span class="yr">2020</span><h3>Allianz Osmaniye İl Birincisi</h3><p>Üstün başarı ve markaya katkılardan ötürü 2020 Allianz İl Birincisi Acente</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2020-bolge-birincisi-en-yuksek-prim-uretimi.jpg" alt="2020 — Bölge Birincisi — En Yüksek Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2020</span><h4>Bölge Birincisi — En Yüksek Prim Üretimi</h4><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
+          <div class="a-body"><span class="yr">2020</span><h3>Bölge Birincisi — En Yüksek Prim Üretimi</h3><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2019-bolge-birincisi-en-yuksek-prim-uretimi.jpg" alt="2019 — Bölge Birincisi — En Yüksek Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2019</span><h4>Bölge Birincisi — En Yüksek Prim Üretimi</h4><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
+          <div class="a-body"><span class="yr">2019</span><h3>Bölge Birincisi — En Yüksek Prim Üretimi</h3><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2019-karlilikta-bolge-ucuncusu.jpg" alt="2019 — Kârlılıkta Bölge Üçüncüsü" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2019</span><h4>Kârlılıkta Bölge Üçüncüsü</h4><p>Güney Anadolu Bölgesi'nde 3. en yüksek kârlılığı gerçekleştiren acente</p></div>
+          <div class="a-body"><span class="yr">2019</span><h3>Kârlılıkta Bölge Üçüncüsü</h3><p>Güney Anadolu Bölgesi'nde 3. en yüksek kârlılığı gerçekleştiren acente</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2019-allianz-prestij-club-uyeligi.jpg" alt="2019 — Allianz Prestij Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2019</span><h4>Allianz Prestij Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2019</span><h3>Allianz Prestij Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2018-bolge-ikincisi-prim-uretimi.jpg" alt="2018 — Bölge İkincisi — Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2018</span><h4>Bölge İkincisi — Prim Üretimi</h4><p>Güney Anadolu Bölgesi'nde 2. en yüksek prim üretimi</p></div>
+          <div class="a-body"><span class="yr">2018</span><h3>Bölge İkincisi — Prim Üretimi</h3><p>Güney Anadolu Bölgesi'nde 2. en yüksek prim üretimi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2018-allianz-prestij-club-uyeligi.jpg" alt="2018 — Allianz Prestij Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2018</span><h4>Allianz Prestij Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2018</span><h3>Allianz Prestij Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2017-30-yil-onur-odulu.jpg" alt="2017 — 30. Yıl Onur Ödülü" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2017</span><h4>30. Yıl Onur Ödülü</h4><p>30 yıl süresince örnek iş anlayışıyla başarı sağlayan acentemize Allianz'ın teşekkürü</p></div>
+          <div class="a-body"><span class="yr">2017</span><h3>30. Yıl Onur Ödülü</h3><p>30 yıl süresince örnek iş anlayışıyla başarı sağlayan acentemize Allianz'ın teşekkürü</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2017-bolge-birincisi-en-yuksek-prim-uretimi.jpg" alt="2017 — Bölge Birincisi — En Yüksek Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2017</span><h4>Bölge Birincisi — En Yüksek Prim Üretimi</h4><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
+          <div class="a-body"><span class="yr">2017</span><h3>Bölge Birincisi — En Yüksek Prim Üretimi</h3><p>Güney Anadolu Bölgesi acenteleri arasında en yüksek prim üretimi</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2017-karlilikta-bolge-ikincisi.jpg" alt="2017 — Kârlılıkta Bölge İkincisi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2017</span><h4>Kârlılıkta Bölge İkincisi</h4><p>Güney Anadolu Bölgesi'nde 2. en yüksek kârlılığı gerçekleştiren acente</p></div>
+          <div class="a-body"><span class="yr">2017</span><h3>Kârlılıkta Bölge İkincisi</h3><p>Güney Anadolu Bölgesi'nde 2. en yüksek kârlılığı gerçekleştiren acente</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2017-allianz-prestij-club-uyeligi.jpg" alt="2017 — Allianz Prestij Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2017</span><h4>Allianz Prestij Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2017</span><h3>Allianz Prestij Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Prestij Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2016-allianz-elit-club-uyeligi.jpg" alt="2016 — Allianz Elit Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2016</span><h4>Allianz Elit Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Elit Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2016</span><h3>Allianz Elit Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Elit Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2015-bolge-ucuncusu-prim-uretimi.jpg" alt="2015 — Bölge Üçüncüsü — Prim Üretimi" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2015</span><h4>Bölge Üçüncüsü — Prim Üretimi</h4><p>Güney Anadolu Bölgesi'nde 3. en yüksek prim üretimi — Allianz CEO'su imzalı sertifika</p></div>
+          <div class="a-body"><span class="yr">2015</span><h3>Bölge Üçüncüsü — Prim Üretimi</h3><p>Güney Anadolu Bölgesi'nde 3. en yüksek prim üretimi — Allianz CEO'su imzalı sertifika</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2013-allianz-elit-club-uyeligi.jpg" alt="2013 — Allianz Elit Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2013</span><h4>Allianz Elit Club Üyeliği</h4><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Elit Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2013</span><h3>Allianz Elit Club Üyeliği</h3><p>Gösterilen üstün başarı ve Allianz markasına katkılardan ötürü Agency Club Elit Üyeliği</p></div>
         </article>
         <article class="award-card">
           <div class="award-photo"><img src="img/odul-2009-allianz-elit-club-uyeligi.jpg" alt="2009 — Allianz Elit Club Üyeliği" width="640" height="480" loading="lazy" decoding="async"></div>
-          <div class="a-body"><span class="yr">2009</span><h4>Allianz Elit Club Üyeliği</h4><p>2009 yılı boyunca gösterilen üstün başarı ve markaya katkılardan ötürü Elit Club Üyeliği</p></div>
+          <div class="a-body"><span class="yr">2009</span><h3>Allianz Elit Club Üyeliği</h3><p>2009 yılı boyunca gösterilen üstün başarı ve markaya katkılardan ötürü Elit Club Üyeliği</p></div>
         </article>
       </div>
     </div>
@@ -836,27 +929,27 @@ html.js .reveal.in{opacity:1;transform:none}
     <div class="cert-grid">
       <figure class="cert-card reveal">
         <img src="img/sertifika-allianz-acentelik-belgesi.jpg" alt="Allianz Acentelik Belgesi" width="760" height="570" loading="lazy" decoding="async">
-        <figcaption><h4>Allianz Acentelik Belgesi</h4><p>Sözleşme yapma ve prim tahsiline yetkili acente — Allianz Sigorta A.Ş.</p></figcaption>
+        <figcaption><h3>Allianz Acentelik Belgesi</h3><p>Sözleşme yapma ve prim tahsiline yetkili acente — Allianz Sigorta A.Ş.</p></figcaption>
       </figure>
       <figure class="cert-card reveal">
         <img src="img/sertifika-tarsim-tarim-sigortalari-egitim-sertifikasi.jpg" alt="TARSİM Tarım Sigortaları Eğitim Sertifikası" width="760" height="570" loading="lazy" decoding="async">
-        <figcaption><h4>TARSİM Tarım Sigortaları Eğitim Sertifikası</h4><p>Süleyman Algan — Devlet Destekli Tarım Sigortaları eğitimi</p></figcaption>
+        <figcaption><h3>TARSİM Tarım Sigortaları Eğitim Sertifikası</h3><p>Süleyman Algan — Devlet Destekli Tarım Sigortaları eğitimi</p></figcaption>
       </figure>
       <figure class="cert-card reveal">
         <img src="img/sertifika-segem-teknik-personel-egitimi-sertifikasi-suleyman-algan.jpg" alt="SEGEM Teknik Personel Eğitimi Sertifikası — Süleyman Algan" width="760" height="567" loading="lazy" decoding="async">
-        <figcaption><h4>SEGEM Teknik Personel Eğitimi Sertifikası</h4><p>Süleyman Algan — Sigortacılık Eğitim Merkezi, 2009</p></figcaption>
+        <figcaption><h3>SEGEM Teknik Personel Eğitimi Sertifikası</h3><p>Süleyman Algan — Sigortacılık Eğitim Merkezi, 2009</p></figcaption>
       </figure>
       <figure class="cert-card reveal">
         <img src="img/sertifika-segem-teknik-personel-yeterlilik-sertifikasi.jpg" alt="SEGEM Teknik Personel Yeterlilik Sertifikası" width="760" height="570" loading="lazy" decoding="async">
-        <figcaption><h4>SEGEM Teknik Personel Yeterlilik Sertifikası</h4><p>Ahmet Algan — Sigortacılık Eğitim Merkezi, 2024</p></figcaption>
+        <figcaption><h3>SEGEM Teknik Personel Yeterlilik Sertifikası</h3><p>Ahmet Algan — Sigortacılık Eğitim Merkezi, 2024</p></figcaption>
       </figure>
       <figure class="cert-card reveal">
         <img src="img/sertifika-segem-teknik-personel-yeterlilik-sertifikasi-2.jpg" alt="SEGEM Teknik Personel Yeterlilik Sertifikası" width="760" height="570" loading="lazy" decoding="async">
-        <figcaption><h4>SEGEM Teknik Personel Yeterlilik Sertifikası</h4><p>Dilan Algan — Sigortacılık Eğitim Merkezi, 2022</p></figcaption>
+        <figcaption><h3>SEGEM Teknik Personel Yeterlilik Sertifikası</h3><p>Dilan Algan — Sigortacılık Eğitim Merkezi, 2022</p></figcaption>
       </figure>
       <figure class="cert-card reveal">
         <img src="img/sertifika-allianz-basari-sertifikasi.jpg" alt="Allianz Başarı Sertifikası" width="760" height="524" loading="lazy" decoding="async">
-        <figcaption><h4>Allianz Başarı Sertifikası</h4><p>Allianz Sigorta tarafından verilen başarı belgesi</p></figcaption>
+        <figcaption><h3>Allianz Başarı Sertifikası</h3><p>Allianz Sigorta tarafından verilen başarı belgesi</p></figcaption>
       </figure>
     </div>
   </div>
@@ -900,25 +993,25 @@ html.js .reveal.in{opacity:1;transform:none}
       <div class="reveal">
         <div class="c-item">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg></div>
-          <div><h4>Adresimiz</h4><p><a href="https://www.google.com/maps/search/?api=1&amp;query=Fettaho%C4%9Flu%20Sigorta%20Acenteli%C4%9Fi%20D%C3%BCzi%C3%A7i&amp;query_place_id=ChIJf8lznsbxLhURTrY1x9eaUTA" target="_blank" rel="noopener">İstiklal Mah. Refik Cesur Bulv. No:196/1<br>Düziçi / Osmaniye</a><br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Fettaho%C4%9Flu%20Sigorta%20Acenteli%C4%9Fi%20D%C3%BCzi%C3%A7i&amp;destination_place_id=ChIJf8lznsbxLhURTrY1x9eaUTA" target="_blank" rel="noopener" style="color:var(--brass-light);font-weight:600">Yol tarifi al →</a></p></div>
+          <div><h3>Adresimiz</h3><p><a href="https://www.google.com/maps/search/?api=1&amp;query=Fettaho%C4%9Flu%20Sigorta%20Acenteli%C4%9Fi%20D%C3%BCzi%C3%A7i&amp;query_place_id=ChIJf8lznsbxLhURTrY1x9eaUTA" target="_blank" rel="noopener">İstiklal Mah. Refik Cesur Bulv. No:196/1<br>Düziçi / Osmaniye</a><br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Fettaho%C4%9Flu%20Sigorta%20Acenteli%C4%9Fi%20D%C3%BCzi%C3%A7i&amp;destination_place_id=ChIJf8lznsbxLhURTrY1x9eaUTA" target="_blank" rel="noopener" style="color:var(--brass-light);font-weight:600">Yol tarifi al →</a></p></div>
         </div>
         <div class="c-item">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg></div>
-          <div><h4>E-posta</h4>
+          <div><h3>E-posta</h3>
             <a href="mailto:fettahoglusigorta0@gmail.com">fettahoglusigorta0@gmail.com</a><br>
             <a href="mailto:fettahoglusigorta@hotmail.com">fettahoglusigorta@hotmail.com</a>
           </div>
         </div>
         <div class="c-item">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
-          <div><h4>Telefon</h4>
+          <div><h3>Telefon</h3>
             <a href="tel:+905418765125">0541 876 51 25</a> · <a href="tel:+905422432225">0542 243 22 25</a><br>
             <a href="tel:+903288765125">0328 876 51 25</a> · <a href="tel:+903288761492">0328 876 14 92</a>
           </div>
         </div>
         <div class="c-item">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <div><h4>Mesai Saatleri</h4><p>Hafta içi: 08:00 – 18:00<br>Cumartesi: 08:00 – 17:00 · Pazar: Kapalı</p></div>
+          <div><h3>Mesai Saatleri</h3><p>Hafta içi: 08:00 – 18:00<br>Cumartesi: 08:00 – 17:00 · Pazar: Kapalı</p></div>
         </div>
       </div>
       <form class="cform reveal" id="contactForm">
@@ -944,6 +1037,7 @@ html.js .reveal.in{opacity:1;transform:none}
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
