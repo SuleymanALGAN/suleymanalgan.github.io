@@ -122,12 +122,20 @@
     "name": "Sigorta ürünleri",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trafik & Kasko Sigortası" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sağlık Sigortası" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yuvam & İşyeri Sigortası" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hayat & BES Sigortası" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Konut & DASK Sigortası" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tarım Sigortası (TARSİM)" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seyahat Sağlık Sigortası" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tamamlayıcı Sağlık Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Modüler Özel Sağlık Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seyahat Sağlık Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hayat & BES Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sevimli Dostum (Evcil Hayvan) Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nakliyat Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Allrisk Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yat & Tekne Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hekim Zorunlu Mesleki Sorumluluk Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tehlikeli Maddeler Zorunlu Sorumluluk Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Özel Güvenlik Zorunlu Mali Sorumluluk Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tarım Sigortası (TARSİM)" } }
     ]
   }
   },
@@ -371,10 +379,11 @@ section{padding:78px 0}
 .sec-head p{color:var(--muted);font-size:16px}
 
 /* Services */
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .svc{
   background:var(--white);border:1px solid var(--line);border-radius:12px;
   padding:32px 30px;position:relative;
+  display:flex;flex-direction:column;
   transition:transform .2s, box-shadow .2s, border-color .2s;
 }
 .svc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(18,34,56,.09);border-color:#cfc4ab}
@@ -384,13 +393,68 @@ section{padding:78px 0}
   display:grid;place-items:center;color:var(--brass);
 }
 .svc .icon svg{width:24px;height:24px}
-.svc h3{font-size:20px;font-weight:600;margin-bottom:10px}
+.svc h3{font-size:19px;font-weight:600;margin-bottom:10px}
 .svc p{font-size:14.5px;color:var(--muted)}
-.svc a.more{
-  display:inline-block;margin-top:16px;font-size:14px;font-weight:600;
+/* margin-top:auto — kart yükseklikleri farklı olsa da butonlar aynı hizada kalır */
+.svc .more{
+  align-self:flex-start;margin-top:auto;padding-top:16px;
+  font-size:14px;font-weight:600;font-family:inherit;
   color:var(--brass);text-decoration:none;
+  background:none;border:none;cursor:pointer;
 }
-.svc a.more:hover{text-decoration:underline}
+.svc .more:hover{text-decoration:underline}
+
+/* ---------- Hizmet detay penceresi ---------- */
+/* Detay metinleri kartın içinde .svc-detail olarak durur (arama motorları okur),
+   pencere açıldığında oradan kopyalanır. */
+.svc-detail{display:none}
+/* <dialog> desteklenmeyen tarayıcıda metin kartın içinde açılır — o durumun stili */
+.svc-detail h4{font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:600;color:var(--ink);margin:18px 0 7px}
+.svc-detail p,.svc-detail li{font-size:14px;color:var(--muted);margin-bottom:8px}
+.svc-detail ul{margin:0 0 12px;padding-left:18px}
+.svc-detail strong{color:var(--text);font-weight:600}
+dialog.svc-modal{
+  padding:0;border:none;border-radius:14px;
+  /* inset+margin:auto — pencereyi ekranın tam ortasına yerleştirir */
+  position:fixed;inset:0;margin:auto;
+  width:min(720px, calc(100% - 32px));max-height:86vh;
+  background:var(--paper);color:var(--text);
+  box-shadow:0 30px 90px rgba(18,34,56,.34);
+  overflow:hidden;
+}
+dialog.svc-modal::backdrop{background:rgba(18,34,56,.6)}
+.svc-modal .m-head{
+  position:sticky;top:0;z-index:2;
+  display:flex;align-items:flex-start;gap:16px;
+  padding:22px 24px;background:var(--ink);color:#fff;
+}
+.svc-modal .m-head h3{color:#fff;font-size:20px;flex:1;line-height:1.3}
+.svc-modal .m-close{
+  flex-shrink:0;width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.28);background:none;color:#fff;
+  font-size:19px;line-height:1;cursor:pointer;
+}
+.svc-modal .m-close:hover{background:rgba(255,255,255,.14)}
+.svc-modal .m-body{padding:24px;overflow-y:auto;max-height:calc(86vh - 152px)}
+.svc-modal .m-body h4{
+  font-family:'IBM Plex Sans',sans-serif;font-size:15.5px;font-weight:600;
+  color:var(--ink);margin:22px 0 8px;
+}
+.svc-modal .m-body h4:first-child{margin-top:0}
+.svc-modal .m-body p{font-size:14.5px;color:var(--muted);margin-bottom:10px}
+.svc-modal .m-body ul{margin:0 0 14px;padding-left:18px}
+.svc-modal .m-body li{font-size:14.5px;color:var(--muted);margin-bottom:7px}
+.svc-modal .m-body li strong,.svc-modal .m-body p strong{color:var(--text);font-weight:600}
+.svc-modal .m-foot{
+  padding:16px 24px;border-top:1px solid var(--line);
+  background:var(--white);display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+.svc-modal .m-foot a{
+  text-decoration:none;font-size:14.5px;font-weight:600;
+  padding:11px 22px;border-radius:999px;
+}
+.svc-modal .m-foot .go{background:var(--brass);color:#fff}
+.svc-modal .m-foot .call{border:1.5px solid var(--line);color:var(--ink)}
 
 /* Duyurular */
 #duyurular{display:none;background:var(--white);border-bottom:1px solid var(--line)}
@@ -631,6 +695,7 @@ html.js .reveal.in{opacity:1;transform:none}
   }
   nav.links.open a{padding:13px 24px;border-bottom:1px solid var(--line)}
   nav.links.open a:last-child{border-bottom:none}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:600px){
   .svc-grid{grid-template-columns:1fr}
@@ -643,6 +708,14 @@ html.js .reveal.in{opacity:1;transform:none}
   /* Dar ekranda yalnızca ikon — metin içeriği daraltmasın */
   .wa-fab{right:16px;bottom:16px;padding:14px;gap:0}
   .wa-fab span{display:none}
+  /* Detay penceresi dar ekranda neredeyse tam ekran açılır */
+  dialog.svc-modal{width:calc(100% - 20px);max-height:92vh}
+  .svc-modal .m-head{padding:18px 18px}
+  .svc-modal .m-head h3{font-size:17.5px}
+  .svc-modal .m-close{width:40px;height:40px}   /* dokunma hedefi */
+  .svc-modal .m-body{padding:20px 18px;max-height:calc(92vh - 150px)}
+  .svc-modal .m-foot{padding:14px 18px}
+  .svc-modal .m-foot a{flex:1;text-align:center;padding:12px 16px}
 }
 </style>
 </head>
@@ -739,30 +812,231 @@ html.js .reveal.in{opacity:1;transform:none}
       <p>Allianz Sigorta'nın yetkili acentesi olarak ürün yelpazesinin tamamını sunar, ihtiyacınıza en doğru teminatı birlikte belirleriz.</p>
     </div>
     <div class="svc-grid">
+
       <article class="svc reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17l1.5-5h9L18 17M8 12l1-3h6l1 3"/><circle cx="7.5" cy="17" r="1.6"/><circle cx="16.5" cy="17" r="1.6"/></svg></div>
         <h3>Trafik &amp; Kasko Sigortası</h3>
         <p>Aracınız için Allianz trafik ve kasko paketlerini teminat kapsamıyla birlikte değerlendirir, size en uygun planı belirleriz. Kaza anında süreç takibini biz üstleniriz; siz sadece bize ulaşın.</p>
-        <a class="more" href="#iletisim">Teklif alın →</a>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Trafik sigortası hangi zararları karşılar?</h4>
+          <p>Zorunlu trafik sigortası, kazada <strong>karşı tarafın</strong> zararlarını üç ana başlıkta karşılar:</p>
+          <ul>
+            <li><strong>Maddi zararlar</strong> — Karşı aracın tamir masrafları; dükkân, bina, bahçe duvarı gibi özel mülklere verilen zararlar; elektrik direği, otobüs durağı, trafik levhası gibi kamu mallarına verilen hasarlar.</li>
+            <li><strong>Sağlık giderleri ve bedeni zararlar</strong> — Karşı taraftaki sürücü, yolcu veya yayaların yaralanması hâlinde ilk müdahale, hastane, tedavi, ameliyat ve protez masrafları.</li>
+            <li><strong>Vefat ve maluliyet tazminatı</strong> — Kalıcı iş göremezlik durumunda hesaplanan maluliyet tazminatı; vefat hâlinde geride kalan yakınlara ödenen "destekten yoksun kalma tazminatı".</li>
+          </ul>
+          <h4>Kasko poliçesinde dikkat edilmesi gereken maddeler</h4>
+          <p>Kasko, trafik sigortasının aksine <strong>kendi aracınızı</strong> güvence altına alan isteğe bağlı bir sigortadır. Poliçedeki şu maddeler, hasar anında alacağınız tazminatı doğrudan belirler:</p>
+          <ul>
+            <li><strong>Ana teminatlar</strong> — Çarpma, çarpışma, devrilme, yanma ve çalınma / çalınmaya teşebbüs.</li>
+            <li><strong>Ek teminatlar</strong> — Deprem, sel ve su baskını, dolu, fırtına gibi doğal afetler; terör ve halk hareketleri; kemirgen ve hayvan zararları; yanlış yakıt dolumu sonucu motorda oluşan hasarlar.</li>
+            <li><strong>İkame araç</strong> — Aracınız serviste tamir edilirken size sağlanan geçici araç hizmeti.</li>
+            <li><strong>Servis seçimi</strong> — Yetkili (marka) servis primi bir miktar artırır, buna karşılık orijinal parça ve işçilik garantisi sunar. Anlaşmalı özel servis seçeneği primi düşürür ancak marka servisinde tamir hakkını sınırlayabilir.</li>
+            <li><strong>Parça niteliği</strong> — "Orijinal parça kullanımı" ibaresi varsa değişen parçalar fabrikasyon orijinal parçayla değiştirilir. Uygun fiyatlı bazı paketlerde eşdeğer (yan sanayi) parça maddesi bulunabilir; poliçeyi onaylamadan bu detaya bakın.</li>
+            <li><strong>Muafiyet</strong> — Hasar anında sigortalının kendi üstlendiği özrisk payıdır.</li>
+            <li><strong>Eskime / kıdem payı</strong> — Yaşlı araçlarda veya ömrünü doldurmuş parçalarda yenisi takılırken uygulanan kesinti.</li>
+            <li><strong>İhtiyari Mali Mesuliyet (İMM)</strong> — Trafik sigortasının karşı tarafa ödediği yasal limit yetersiz kaldığında devreye giren, oldukça önemli bir ek teminattır.</li>
+            <li><strong>Pert total ve rayiç değer</strong> — Araç tamir edilemeyecek durumdaysa ya da tamir masrafı araç değerine yaklaşıyorsa, kaza tarihindeki piyasa emsal değeri (rayiç değer) esas alınır.</li>
+            <li><strong>Asistans / yol yardım</strong> — Çekici ve kurtarma hizmeti (yıllık kaç kez ve kaç km olduğuna bakın), lastik patlaması, yakıt bitmesi ve anahtar kaybında çilingir desteği.</li>
+          </ul>
+        </div>
       </article>
-      <article class="svc reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10z"/><path d="M9.5 11h1.6l1-2 1.6 4 1-2h1.8"/></svg></div>
-        <h3>Sağlık Sigortası</h3>
-        <p>Tamamlayıcı sağlık sigortasıyla özel hastanelerde fark ücreti ödemezsiniz. Sınırsız teminat sunan modüler sağlık planları ve seyahat sağlık sigortasıyla yurt içinde ve dışında koruma altındasınız.</p>
-        <a class="more" href="#iletisim">Teklif alın →</a>
-      </article>
+
       <article class="svc reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/></svg></div>
         <h3>Yuvam &amp; İşyeri Sigortası</h3>
         <p>Ev, DASK ve eşya sigortasıyla yuvanızı; işyeri sigortasıyla işletmenizi ve gelirinizi güvence altına alırız. Poliçeler ihtiyacınıza göre şekillenir, fazlasını ödemezsiniz.</p>
-        <a class="more" href="#iletisim">Teklif alın →</a>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Konut sigortası neleri kapsar?</h4>
+          <p>Konut sigortası; evinizi ve içindeki eşyaları yangından hırsızlığa, su baskınından doğal afetlere kadar aniden gelişen pek çok riske karşı koruma altına alan isteğe bağlı bir sigortadır.</p>
+          <h4>DASK'tan farkı nedir?</h4>
+          <p>Zorunlu Deprem Sigortası (DASK), yalnızca depremin binada yarattığı hasarı devletin belirlediği limit dâhilinde karşılar. Konut sigortası ise hem depremin DASK limitini aşan kısmını öder hem de eşyalarınızı, yangını, tesisat patlamalarını ve hırsızlığı güvenceye alır.</p>
+          <ul>
+            <li><strong>Bina teminatı</strong> — Betonarme yapı, duvarlar, parkeler, mutfak ve banyo dolapları ile sabit tesisat.</li>
+            <li><strong>Eşya teminatı</strong> — Mobilya, beyaz eşya, elektronik cihazlar, giysiler ve kişisel eşyalar. Kiracıysanız da yalnızca eşya sigortası yaptırabilirsiniz.</li>
+            <li><strong>Dahili su ve tesisat hasarları</strong> — En sık yaşanan durumdur: patlayan boru, tıkanan gider veya açık unutulan musluk yüzünden evinizde oluşan hasar. Alt komşunun tavanına sızan suyun zararı da mali mesuliyet teminatından ödenir.</li>
+            <li><strong>Hırsızlık ve hırsızlığa teşebbüs</strong> — Çalınan eşyaların bedeli ödendiği gibi, hırsızın kapı ve pencereyi kırarken verdiği fiziki zararlar da karşılanır.</li>
+            <li><strong>Yangın, infilak ve duman</strong> — Yangın, tüp veya doğalgaz patlaması ve dumanın eşyalara ya da binaya verdiği zararlar poliçenin ana teminatıdır.</li>
+            <li><strong>Komşuluk ve kiracı mali mesuliyeti</strong> — Evinizde çıkan yangın veya su sızıntısı komşunun evine ya da ev sahibinin mülküne zarar verirse doğan tazminat yükünü üstlenir.</li>
+            <li><strong>Konut asistans</strong> — Çilingir, acil tesisatçı ve elektrikçi yönlendirmesi; ev oturulamaz hâle gelirse geçici konaklama masrafları.</li>
+          </ul>
+          <h4>İşyeri sigortası (ticari paket) neleri kapsar?</h4>
+          <p>Ofis, mağaza, imalathane, depo, restoran veya atölye gibi ticari alanların binasını, demirbaşlarını, makinelerini ve stoktaki mallarını güvenceye alan kapsayıcı bir pakettir.</p>
+          <ul>
+            <li><strong>Demirbaş, makine ve emtia</strong> — Ofis mobilyaları, bilgisayar, yazıcı, klima gibi teçhizat; üretimde kullanılan sanayi tipi makineler; depodaki ham madde, yarı mamul ve satışa hazır ürünler. Makine kırılması teminatı eklenerek kullanıcı hatası dışındaki arızalar da kapsanabilir.</li>
+            <li><strong>İş durması / kâr kaybı</strong> — Yangın veya su baskını gibi bir hasar nedeniyle işletme geçici olarak kapanırsa, çalışılamayan günlerdeki gelir kaybını ve kira, personel maaşı gibi sabit giderleri karşılar.</li>
+            <li><strong>Üçüncü şahıs mali mesuliyet</strong> — Müşteri veya tedarikçilerin işyeri sınırları içinde kazaya uğraması (örneğin kaygan zeminde düşüp sakatlanması) hâlinde doğan hukuki ve tıbbi tazminatlar.</li>
+            <li><strong>İşveren mali mesuliyet</strong> — Personelin iş kazası geçirmesi durumunda SGK'nın karşıladığı limitlerin üzerinde kalan maddi ve manevi tazminatlar.</li>
+            <li><strong>Cam kırılması, taşınan para ve emniyeti suistimal</strong> — Vitrin ve dış cephe camlarının kırılması; bankaya para götürülürken yaşanabilecek soygunlar ve çalışan usulsüzlükleri.</li>
+          </ul>
+        </div>
       </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10z"/><path d="M9.5 11h1.6l1-2 1.6 4 1-2h1.8"/></svg></div>
+        <h3>Sağlık Sigortası</h3>
+        <p>Tamamlayıcı sağlık sigortasıyla özel hastanelerde fark ücreti ödemezsiniz. Sınırsız teminat sunan modüler sağlık planları ve seyahat sağlık sigortasıyla yurt içinde ve dışında koruma altındasınız.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Tamamlayıcı Sağlık Sigortası (TSS)</h4>
+          <p>SGK'sı aktif olan kişilerin, SGK ile anlaşmalı özel hastanelerde <strong>fark ücreti ödemeden</strong> yüksek standartta sağlık hizmeti almasını sağlayan bütçe dostu bir sigortadır.</p>
+          <ul>
+            <li><strong>Yatarak tedavi</strong> — Ameliyatlar, hastane yatışları, yoğun bakım, kemoterapi, radyoterapi, diyaliz ve küçük müdahaleler %100 oranında, genellikle limitsiz karşılanır.</li>
+            <li><strong>Ayakta tedavi</strong> — Doktor muayenesi, tahlil, röntgen, MR, tomografi ve fizik tedavi; yılda belirli bir hak (örneğin 4 ya da 10 muayene) dâhilinde karşılanır.</li>
+          </ul>
+          <h4>Modüler (özel) sağlık sigortası</h4>
+          <p>SGK şartı aranmaksızın, ihtiyaç ve bütçeye göre modül modül şekillendirilen en geniş kapsamlı özel sağlık sigortasıdır. SGK anlaşması bulunmayan A Plus hastaneler dâhil olmak üzere Türkiye genelinde veya yurt dışında geçerli olacak biçimde tasarlanabilir.</p>
+          <ul>
+            <li><strong>Ana modül (yatarak tedavi)</strong> — Ameliyat, yatış ve yoğun bakım işlemleri; zorunlu temel modüldür.</li>
+            <li><strong>Ayakta tedavi modülü</strong> — Muayene, tahlil, tetkik ve tanı yöntemleri; yıllık limitli ya da %80–%100 ödeme oranlı seçilebilir.</li>
+            <li><strong>Doğum modülü</strong> — Hamilelik takibi, rutin kontroller, tahliller ve doğum (normal / sezaryen).</li>
+            <li><strong>Diş ve göz modülü</strong> — Yıllık diş temizliği, dolgu, göz muayenesi ve gözlük camı limitleri.</li>
+            <li><strong>Yurt dışı tedavi modülü</strong> — Tedavinin yurt dışındaki hastanelerde de geçerli olmasını sağlar.</li>
+          </ul>
+          <h4>Seyahat sağlık sigortası</h4>
+          <p>Yurt içi ve yurt dışı seyahatlerinizde ani rahatsızlık, kaza, hastalık, bagaj kaybı veya seyahat iptali gibi durumları güvence altına alan kısa süreli bir sigortadır. Başta Schengen olmak üzere pek çok ülkenin vize başvurusunda <strong>yasal zorunluluktur</strong>.</p>
+          <ul>
+            <li><strong>Acil tıbbi tedavi</strong> — Seyahat sırasında hastalanma veya kaza hâlinde doktor, hastane ve ilaç masrafları.</li>
+            <li><strong>Tıbbi nakil ve transfer</strong> — Hastanın en yakın uygun sağlık kuruluşuna nakli, tedavi sonrası ülkesine ya da evine dönüşü.</li>
+            <li><strong>Cenaze nakli</strong> — Seyahat sırasında vefat hâlinde cenazenin yurda nakil organizasyonu ve masrafları.</li>
+            <li><strong>Bagaj kaybı ve gecikmesi</strong> — Havayolunun bagajınızı kaybetmesi durumunda acil ihtiyaçlarınız için ödenen tazminat.</li>
+          </ul>
+        </div>
+      </article>
+
       <article class="svc reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Hayat &amp; BES Sigortası</h3>
         <p>Hayat sigortası sevdiklerinizi korur, BES geleceğiniz için birikim yapar. Vergi avantajı ve esnek ödeme seçenekleriyle bugünü ve yarını birlikte planlarız.</p>
-        <a class="more" href="#iletisim">Teklif alın →</a>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Hayat sigortası ne işe yarar?</h4>
+          <p>Vefat, sakatlık veya kritik hastalık gibi beklenmedik durumlar karşısında sigortalıyı ve ailesini finansal olarak güvence altına alan bir poliçedir. Birikimli hayat sigortalarında hem risklere karşı korunur hem de poliçe süresi sonunda birikmiş paranızı geri alırsınız.</p>
+          <ul>
+            <li><strong>Vefat teminatı</strong> — Sigortalının poliçe süresi içinde vefatı hâlinde, poliçede belirtilen tazminat önceden belirlenen lehtara veya yasal mirasçılara ödenir; ailenin yaşam standardı korunur.</li>
+            <li><strong>Maluliyet teminatı</strong> — Kaza ya da hastalık sonucu sürekli çalışamayacak duruma gelinmesi hâlinde tazminat doğrudan sigortalıya ödenir.</li>
+            <li><strong>Tehlikeli hastalıklar teminatı</strong> — Kanser, kalp krizi, böbrek yetmezliği, felç gibi yüksek tedavi masrafı gerektiren hastalıklarda toplu para ödemesi yapılır.</li>
+            <li><strong>Vergi avantajı</strong> — Ödediğiniz primleri gelir vergisi matrahınızdan düşerek vergi indirimi elde edebilirsiniz.</li>
+          </ul>
+          <h4>Bireysel Emeklilik Sistemi (BES)</h4>
+          <p>BES; çalışma hayatı boyunca düzenli tasarruf ederek emeklilik döneminde ek gelir elde etmenizi sağlayan, devlet katkısıyla desteklenmiş uzun vadeli bir birikim sistemidir. Bir sigorta ürünü değildir; SGK'dan alacağınız emekli maaşına ek olarak yaşam standardınızı korumanızı sağlayan bir tasarruf mekanizmasıdır.</p>
+          <ul>
+            <li><strong>%20 devlet katkısı</strong> — Sisteme yatırdığınız her katkı payı için devlet %20 oranında ek katkı sağlar; BES'in en büyük avantajıdır.</li>
+            <li><strong>Fon seçimi ve yatırım çeşitliliği</strong> — Birikiminiz, seçtiğiniz emeklilik yatırım fonlarında (faizsiz altın, hisse senedi, borçlanma araçları vb.) uzman yöneticiler tarafından değerlendirilir.</li>
+            <li><strong>Esnek katkı payı</strong> — Aylık ödeme tutarınızı istediğiniz zaman artırabilir, azaltabilir ya da ödemelere ara verebilirsiniz.</li>
+            <li><strong>Emeklilik şartları</strong> — Sistemde en az 10 yıl kalmak ve 56 yaşını doldurmak şartıyla emekliliğe hak kazanır; birikiminizi toplu para ya da aylık maaş olarak alabilirsiniz.</li>
+          </ul>
+        </div>
       </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="16" rx="4.2" ry="3.4"/><ellipse cx="5.6" cy="11" rx="2.1" ry="2.5"/><ellipse cx="18.4" cy="11" rx="2.1" ry="2.5"/><ellipse cx="9.2" cy="6.6" rx="2.1" ry="2.6"/><ellipse cx="14.8" cy="6.6" rx="2.1" ry="2.6"/></svg></div>
+        <h3>Sevimli Dostum Sigortası</h3>
+        <p>Kedi ve köpeğinizin kaza, hastalık, ameliyat ve veteriner masraflarını güvence altına alırız. Dostunuzun üçüncü kişilere verebileceği zararlar da teminat kapsamındadır.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Sevimli Dostum (evcil hayvan) sigortası nedir?</h4>
+          <p>Kedi ve köpeklerin kaza veya hastalık durumlarında ortaya çıkan veterinerlik, tedavi, ameliyat, muayene ve ilaç masraflarını güvence altına alan bir koruma türüdür.</p>
+          <ul>
+            <li><strong>Acil tedavi ve ameliyat</strong> — Kaza, yüksekten düşme, zehirlenme veya ani rahatsızlıklarda gereken cerrahi müdahale, yatış ve ilaç masrafları.</li>
+            <li><strong>Muayene ve tetkik</strong> — Anlaşmalı veterinerlerde yapılan rutin kontrol, tahlil ve röntgen giderleri.</li>
+            <li><strong>Üçüncü şahıs mali sorumluluk</strong> — Evcil hayvanınızın başka bir kişiye ya da başkasının eşyasına verebileceği maddi ve bedeni zararlar.</li>
+            <li><strong>Kayıp ilanı ve arama</strong> — Dostunuzun kaybolması hâlinde ilan ve arama masraflarına katkı.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg></div>
+        <h3>Nakliyat Sigortası</h3>
+        <p>Ticari malınız veya kişisel eşyanız kara, deniz, hava ya da demir yoluyla taşınırken oluşabilecek kaza, hasar ve kayıpları teminat altına alırız.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Nakliyat (emtia) sigortası nedir?</h4>
+          <p>Bir ticari malın veya kişisel eşyanın kara, deniz, hava ya da demir yoluyla bir noktadan diğerine taşınması sırasında uğrayabileceği kayıp, kaza ve fiziksel hasarları güvence altına alan sigorta türüdür.</p>
+          <ul>
+            <li><strong>Kapsam</strong> — Taşıma sırasında oluşabilecek trafik kazası, alabora olma veya batma, yangın, devrilme, ıslanma, çalınma ve yükleme-boşaltma sırasındaki kırılma gibi riskler.</li>
+            <li><strong>Tüm taşıma türlerinde geçerli</strong> — Kamyon ve TIR, kargo uçağı, yük gemisi ya da tren fark etmeksizin her türlü nakliye aracında uygulanır.</li>
+            <li><strong>Poliçe süresi</strong> — Genellikle tek sevkiyat esasına göre düzenlenir; mal yüklemeye başladığında başlar, alıcıya ulaştığında sona erer.</li>
+          </ul>
+          <h4>Çeşitleri</h4>
+          <ul>
+            <li><strong>Emtia (yük) sigortası</strong> — Malın sahibinin kendi ürünlerini korumak için yaptırdığı sigorta.</li>
+            <li><strong>Taşıyıcı sorumluluk sigortası (yurt içi / CMR)</strong> — Nakliye şirketinin taşıdığı yüke karşı hukuki sorumluluğunu güvenceye alır.</li>
+            <li><strong>Kıymet nakliyat sigortası</strong> — Para, altın, çek veya değerli evrak taşımacılığı için düzenlenen özel poliçeler.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5V5"/><path d="M3.5 13a8.5 8.5 0 0 1 17 0z"/><path d="M12 13v5.5a2 2 0 0 0 4 0"/></svg></div>
+        <h3>Allrisk Sigortası</h3>
+        <p>Poliçede istisna sayılmayan her ani ve beklenmedik hasarı karşılayan, en geniş kapsamlı korumadır. Şantiye, elektronik cihaz ve değerli ekipmanlarda tercih edilir.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Allrisk sigortası nedir?</h4>
+          <p>Poliçede açıkça <strong>istisna</strong> olarak sayılan durumlar dışında, sigortalı malın uğrayabileceği her türlü ani ve beklenmedik fiziksel hasarı kapsayan en geniş sigorta türüdür.</p>
+          <ul>
+            <li><strong>İstisna esası</strong> — Poliçede nelerin kapsama girdiği değil, yalnızca kapsam <em>dışında</em> kalan riskler yazılır. "Kapsam dışı" denmeyen her sürpriz hasar ödenir.</li>
+            <li><strong>İspat yükü şirkettedir</strong> — Hasar durumunda zararın kapsam dışı olduğunu kanıtlama yükümlülüğü sigorta şirketine aittir.</li>
+            <li><strong>Kullanım alanları</strong> — En çok inşaat ve montaj (şantiye) işlerinde, elektronik cihazlarda, nakliyatta ve değerli sanat eserlerinde tercih edilir.</li>
+          </ul>
+          <p>Kısacası: standart poliçeler yalnızca seçilen riskleri öderken, Allrisk yasaklanmayan her şeyi öder. Aşınma, yıpranma ve kasıtlı zararlar kapsam dışındadır.</p>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10"/><path d="M13.2 5l4.8 8h-4.8"/><path d="M10.8 7.5L6.6 13h4.2"/><path d="M4 16h16l-2.2 4H6.2z"/></svg></div>
+        <h3>Yat Sigortası</h3>
+        <p>Tekne ve yatınızı fırtına, çarpışma, karaya oturma, yangın ve hırsızlığa karşı koruruz. Üçüncü şahıs sorumluluğu ve kurtarma masrafları da teminat altındadır.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Yat (tekne) sigortası nedir?</h4>
+          <p>Özel veya ticari amaçla kullanılan yat ve teknelerin deniz şartları, doğa olayları ya da kazalar sonucu uğrayabileceği zararları güvence altına alan geniş kapsamlı bir poliçedir.</p>
+          <ul>
+            <li><strong>Tekne ve makine güvencesi</strong> — Gövde, motorlar, servis botları ve sabit ekipmanların fırtına, karaya oturma, çatışma, yangın ve hırsızlık risklerine karşı korunması.</li>
+            <li><strong>Üçüncü şahıs mali sorumluluk</strong> — Teknenin başka bir tekneye, iskeleye veya denizdeki insanlara verebileceği maddi ve bedeni zararlar.</li>
+            <li><strong>Çevre ve deniz kirliliği</strong> — Kaza sonucu denize sızan akaryakıt veya kimyasalların yol açtığı kirlilik ve temizleme masrafları.</li>
+            <li><strong>Kurtarma ve yardım</strong> — Arıza veya kaza durumunda teknenin çekilmesi, kurtarılması ve enkaz kaldırma giderleri.</li>
+          </ul>
+          <p>Poliçe hem karada (kışlama ve çekek yerinde) hem de denizde (seyir ve demirleme sırasında) geçerlidir.</p>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5V20"/><path d="M7.5 20h9"/><path d="M4 8h16"/><path d="M4 8l-2 5h4z"/><path d="M20 8l-2 5h4z"/><circle cx="12" cy="4.2" r="1.2"/></svg></div>
+        <h3>Sorumluluk Sigortaları</h3>
+        <p>Mesleki ve yasal sorumluluklarınızı güvenceye alırız: hekim mesleki sorumluluk, tehlikeli maddeler ve özel güvenlik zorunlu mali sorumluluk poliçeleri.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>Hekim zorunlu mesleki sorumluluk (tıbbi kötü uygulama) sigortası</h4>
+          <p>Hekimlerin ve diş hekimlerinin mesleki faaliyetleri sırasında yapabilecekleri tıbbi hata veya ihmaller (malpraktis) nedeniyle hastaya verebilecekleri zararları güvence altına alan, <strong>yasal olarak zorunlu</strong> bir poliçedir.</p>
+          <ul>
+            <li><strong>Malpraktis güvencesi</strong> — Hatalı teşhis, yanlış tedavi, ameliyat hatası veya bakım eksikliği nedeniyle hastanın bedeni zarara uğraması, engelli kalması ya da vefatı hâlinde doğacak maddi ve manevi tazminatlar.</li>
+            <li><strong>Hukuki koruma ve savunma</strong> — Hasta veya yakınının açtığı davalarda mahkeme, avukat ve bilirkişi masrafları.</li>
+            <li><strong>Geriye dönük kapsam</strong> — Poliçe yapılmadan önceki bir yıla kadar gerçekleşen, ancak poliçe döneminde fark edilen hasarlar da belirli şartlarla teminat altına alınır.</li>
+            <li><strong>Prim paylaşımı</strong> — Kamuda çalışan hekimlerin priminin yarısını devlet öder; özel sektördekiler primlerini kendileri karşılar.</li>
+          </ul>
+          <h4>Tehlikeli maddeler ve tehlikeli atıklar zorunlu sorumluluk sigortası</h4>
+          <p>Yanıcı, patlayıcı, parlayıcı, radyoaktif veya zehirli maddelerle çalışan işletmelerin; bu maddelerin yol açabileceği kazalar sonucu üçüncü kişilere ve çevreye verebileceği zararları güvence altına alan zorunlu bir poliçedir.</p>
+          <ul>
+            <li><strong>Geniş kapsam</strong> — Tehlikeli maddelerin üretimi, depolanması, satışı, kullanımı veya taşınması sırasında oluşabilecek patlama, yangın, sızıntı ve zehirlenme durumları.</li>
+            <li><strong>Üçüncü şahıs zararları</strong> — Kazada zarar görenlerin tedavi masrafları, vefat ve sakatlık tazminatları ile çevre bina ve eşyalarda oluşan maddi zararlar.</li>
+            <li><strong>Kusursuz sorumluluk</strong> — İşletmenin kazada doğrudan kusuru olmasa dahi, tehlikeli madde faaliyeti nedeniyle doğan hukuki sorumluluğunu karşılar.</li>
+            <li><strong>Zorunlu olduğu alanlar</strong> — Akaryakıt istasyonları, LPG dolum tesisleri, tüp gaz bayileri, kimya fabrikaları ve havai fişek üreticileri.</li>
+          </ul>
+          <h4>Özel güvenlik zorunlu mali sorumluluk sigortası</h4>
+          <p>5188 sayılı Özel Güvenlik Hizmetlerine Dair Kanun kapsamında, özel güvenlik görevlilerinin görevleri sırasında üçüncü kişilere verebileceği zararları karşılayan zorunlu bir poliçedir. Özel güvenlik izni alan tüm kişi ve kuruluşların yaptırması şarttır.</p>
+          <ul>
+            <li><strong>Üçüncü şahıs zararları</strong> — Güvenlik görevlisinin görevi sırasındaki eylemleri nedeniyle üçüncü kişilerin uğradığı bedeni ve maddi zararlar.</li>
+            <li><strong>Hukuki sorumluluk</strong> — Bu zararlardan doğan ve işverenden talep edilen tazminat yükümlülükleri.</li>
+            <li><strong>Kapsam</strong> — Alışveriş merkezleri, siteler, fabrikalar, bankalar, hastaneler ve organizasyonlarda görev yapan güvenlik personeli.</li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1046,6 +1320,20 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </footer>
 
+<!-- Hizmet detay penceresi. Başlık ve içerik, tıklanan kartın .svc-detail
+     bloğundan kopyalanır — metinler kartların içinde durur. -->
+<dialog class="svc-modal" id="svcModal" aria-labelledby="svcModalTitle">
+  <div class="m-head">
+    <h3 id="svcModalTitle"></h3>
+    <button class="m-close" type="button" id="svcModalClose" aria-label="Kapat">&#10005;</button>
+  </div>
+  <div class="m-body" id="svcModalBody"></div>
+  <div class="m-foot">
+    <a class="go" href="#iletisim">Teklif Al</a>
+    <a class="call" href="tel:+903288765125">Hemen Ara</a>
+  </div>
+</dialog>
+
 <a class="wa-fab" href="https://wa.me/905418765125?text=Merhaba%2C%20sigorta%20teklifi%20almak%20istiyorum."
    target="_blank" rel="noopener" aria-label="WhatsApp ile mesaj gönder">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
@@ -1061,6 +1349,61 @@ const btn = document.getElementById('menuBtn');
 const links = document.getElementById('navLinks');
 btn.addEventListener('click', () => links.classList.toggle('open'));
 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+/* ============================================================
+   HİZMET DETAY PENCERESİ
+   Her kartın içindeki gizli .svc-detail bloğu, "Detaylar" tıklanınca
+   pencereye kopyalanır. <dialog> desteklenmeyen tarayıcılarda metin
+   kartın kendi içinde açılıp kapanır.
+   ============================================================ */
+(function(){
+  const modal   = document.getElementById('svcModal');
+  const titleEl = document.getElementById('svcModalTitle');
+  const bodyEl  = document.getElementById('svcModalBody');
+  const destek  = modal && typeof modal.showModal === 'function';
+
+  document.querySelectorAll('.svc .more').forEach(btn => {
+    const kart   = btn.closest('.svc');
+    const detay  = kart.querySelector('.svc-detail');
+    if (!detay) return;
+
+    if (!destek){
+      btn.addEventListener('click', () => {
+        const acik = detay.style.display === 'block';
+        detay.style.display = acik ? 'none' : 'block';
+        btn.textContent = acik ? 'Detaylar →' : 'Detayları gizle ↑';
+      });
+      return;
+    }
+
+    btn.addEventListener('click', () => {
+      titleEl.textContent = kart.querySelector('h3').textContent;
+      bodyEl.innerHTML = detay.innerHTML;
+      bodyEl.scrollTop = 0;
+      modal.showModal();
+      document.body.style.overflow = 'hidden';   // arka plan kaymasın
+    });
+  });
+
+  if (!destek) return;
+
+  // Sayfa kilidini serbest bırakma: yalnızca 'close' olayına güvenmiyoruz,
+  // çünkü bazı tarayıcılarda tetiklenmiyor ve sayfa kaydırılamaz kalıyor.
+  // Esc dahil her kapanış yolu buraya uğrar.
+  const serbestBirak = () => { document.body.style.overflow = ''; };
+  const kapat = () => { modal.close(); serbestBirak(); };
+
+  document.getElementById('svcModalClose').addEventListener('click', kapat);
+  // Pencerenin dışına (koyu alana) tıklayınca kapansın
+  modal.addEventListener('click', e => { if (e.target === modal) kapat(); });
+  modal.querySelectorAll('.m-foot a').forEach(a => a.addEventListener('click', kapat));
+  modal.addEventListener('close', serbestBirak);
+  modal.addEventListener('cancel', serbestBirak);
+  // Esc ile kapatma — pencere gerçekten kapandıysa kilidi bırak
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setTimeout(() => { if (!modal.open) serbestBirak(); }, 0);
+  });
+})();
 
 // Scroll reveal (destek yoksa tümünü görünür yap)
 // revealObserve, sonradan eklenen kartlar için de kullanılabilir
