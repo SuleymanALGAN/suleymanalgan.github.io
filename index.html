@@ -142,7 +142,12 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hekim Zorunlu Mesleki Sorumluluk Sigortası" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tehlikeli Maddeler Zorunlu Sorumluluk Sigortası" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Özel Güvenlik Zorunlu Mali Sorumluluk Sigortası" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tarım Sigortası (TARSİM)" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tarım ve Hayvancılık Sigortası (TARSİM)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Siber Güvence Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ferdi Kaza Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kişisel Güvence Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Maaş Ödeyen Güvenli Ailem Sigortası" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Alacak Sigortası" } }
     ]
   }
   },
@@ -237,6 +242,10 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
+  /* Kayma durduğu için şerit elle kaydırılabilir olmalı; yinelenen
+     ikinci liste de gereksizleştiğinden gizlenir. */
+  .trust{overflow-x:auto}
+  .trust-track span[aria-hidden]{display:none}
 }
 body{
   font-family:'IBM Plex Sans',system-ui,sans-serif;
@@ -372,10 +381,18 @@ nav.links a:hover{color:var(--brass)}
 .seal-text text{fill:#8fa3ba;font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;font-weight:600}
 
 /* trust strip */
-.trust{background:#0d1a2c;color:#8fa3ba;font-size:13.5px}
-.trust .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;padding-top:14px;padding-bottom:14px}
-.trust span{display:flex;align-items:center;gap:8px;white-space:nowrap}
-.trust span::before{content:"◆";color:var(--brass);font-size:8px}
+/* Güven şeridi: ürünler tek satırda sürekli sola kayar.
+   Kesintisiz döngü için liste iki kez yazılır; ikinci kopya aria-hidden.
+   İmleç şeridin üstüne gelince kayma durur. */
+.trust{background:#0d1a2c;color:#8fa3ba;font-size:13.5px;overflow:hidden;padding:14px 0}
+.trust-track{display:flex;width:max-content;animation:trustKay 45s linear infinite}
+.trust:hover .trust-track{animation-play-state:paused}
+.trust-track span{display:flex;align-items:center;gap:8px;white-space:nowrap;padding:0 14px}
+.trust-track span::before{content:"◆";color:var(--brass);font-size:8px}
+@keyframes trustKay{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
 /* ---------- Sections ---------- */
 section{padding:78px 0}
@@ -410,6 +427,10 @@ section{padding:78px 0}
   background:none;border:none;cursor:pointer;
 }
 .svc .more:hover{text-decoration:underline}
+/* "Diğer Ürünler" kartı: detay penceresi yerine ürünler doğrudan listelenir */
+.svc .urun-listesi{margin:12px 0 0;padding-left:18px}
+.svc .urun-listesi li{font-size:14.5px;color:var(--muted);margin-bottom:7px}
+.svc .urun-listesi li::marker{color:var(--brass)}
 
 /* ---------- Hizmet detay penceresi ---------- */
 /* Detay metinleri kartın içinde .svc-detail olarak durur (arama motorları okur),
@@ -788,14 +809,36 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
+<!-- Kayan güven şeridi. İkinci liste yalnızca döngüyü kesintisiz göstermek
+     için var; ekran okuyucular tekrar okumasın diye aria-hidden. Ürün
+     eklenirse İKİ listeye birden eklenmeli. -->
 <div class="trust">
-  <div class="wrap">
+  <div class="trust-track">
     <span>Trafik &amp; Kasko</span>
     <span>Sağlık</span>
     <span>Konut &amp; DASK</span>
     <span>İşyeri</span>
     <span>Hayat &amp; BES</span>
+    <span>Sevimli Dostum</span>
+    <span>Nakliyat</span>
+    <span>Allrisk</span>
+    <span>Yat Sigortası</span>
+    <span>Sorumluluk Sigortaları</span>
+    <span>TARSİM</span>
     <span>7/24 Hasar Desteği</span>
+
+    <span aria-hidden="true">Trafik &amp; Kasko</span>
+    <span aria-hidden="true">Sağlık</span>
+    <span aria-hidden="true">Konut &amp; DASK</span>
+    <span aria-hidden="true">İşyeri</span>
+    <span aria-hidden="true">Hayat &amp; BES</span>
+    <span aria-hidden="true">Sevimli Dostum</span>
+    <span aria-hidden="true">Nakliyat</span>
+    <span aria-hidden="true">Allrisk</span>
+    <span aria-hidden="true">Yat Sigortası</span>
+    <span aria-hidden="true">Sorumluluk Sigortaları</span>
+    <span aria-hidden="true">TARSİM</span>
+    <span aria-hidden="true">7/24 Hasar Desteği</span>
   </div>
 </div>
 
@@ -1042,6 +1085,37 @@ html.js .reveal.in{opacity:1;transform:none}
             <li><strong>Kapsam</strong> — Alışveriş merkezleri, siteler, fabrikalar, bankalar, hastaneler ve organizasyonlarda görev yapan güvenlik personeli.</li>
           </ul>
         </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 9c0-3 1.6-5.2 4-6 .5 2.9-.6 5.3-4 6z"/><path d="M12 13c-2.8 0-4.7-1.7-5.4-4.3 2.9-.5 5 .9 5.4 4.3z"/><path d="M5 21h14"/></svg></div>
+        <h3>Tarım ve Hayvancılık Sigortası (TARSİM)</h3>
+        <p>Devlet destekli TARSİM ile ürününüzü ve hayvanlarınızı dolu, don, sel, kuraklık, yangın ve hayvan hastalıklarına karşı güvence altına alırız. Primin bir bölümünü devlet karşılar.</p>
+        <button class="more" type="button">Detaylar →</button>
+        <div class="svc-detail">
+          <h4>TARSİM nedir, neleri kapsar?</h4>
+          <p>TARSİM, devlet destekli tarım sigortası sistemidir. Çiftçileri doğal afetlere ve hayvan hastalıklarına karşı güvence altına alır; böylece üreticinin olası maddi kaybı en aza inerken tarımsal üretimin sürdürülebilirliği desteklenir.</p>
+          <ul>
+            <li><strong>Doğa kaynaklı riskler</strong> — Dolu, don, fırtına, sel ve kuraklık nedeniyle üründe oluşan zararlar.</li>
+            <li><strong>Yangın</strong> — Ekili alanlarda ve tarımsal varlıklarda yangının yol açtığı hasarlar.</li>
+            <li><strong>Hayvan hastalıkları</strong> — Büyükbaş ve küçükbaş hayvanlarda hastalık kaynaklı kayıplar.</li>
+            <li><strong>Devlet prim desteği</strong> — Poliçe priminin bir bölümü devlet tarafından karşılanır, üreticinin maliyeti azalır.</li>
+          </ul>
+          <p>Hangi ürün ve hayvan grubunun hangi teminat kapsamına girdiğini birlikte değerlendirir, arazinize ve sürünüze uygun poliçeyi hazırlarız.</p>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><path d="M17 14v6"/><path d="M14 17h6"/></svg></div>
+        <h3>Diğer Ürünler</h3>
+        <p>Yukarıdakiler dışındaki ihtiyaçlarınız için de yanınızdayız:</p>
+        <ul class="urun-listesi">
+          <li>Siber Güvence Sigortası</li>
+          <li>Ferdi Kaza Sigortası</li>
+          <li>Kişisel Güvence Sigortası</li>
+          <li>Maaş Ödeyen Güvenli Ailem Sigortası</li>
+          <li>Alacak Sigortası</li>
+        </ul>
       </article>
 
     </div>
